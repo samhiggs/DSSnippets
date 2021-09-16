@@ -86,12 +86,16 @@
         "prefix": "ml-r-slr",
         "body": [
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
+            "",
             "from sklearn.metrics import r2_score",
+            "from sklearn.model_selection import train_test_split",
+            "from sklearn.linear_model import LinearRegression",
+            "",
             "import pandas as pd",
             "import numpy as np",
             "import matplotlib.pyplot as pl",
-            "from sklearn.model_selection import train_test_split",
-            "from sklearn.linear_model import LinearRegression",
             "# %%",
             "dataset = pd.read_csv(\"$1\") # Other type of file could be used which contains tabular data",
             "# Target column must be last to work below all cell's code correctly, If you don't have your target colum last then make necessary changes to below two lines of code",
@@ -107,7 +111,11 @@
             "# %%",
             "y_predicted = model.predict(X_test)",
             "# %%",
-            "r2_score(y_predicted, y_test)"
+            "r2_score(y_predicted, y_test)",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Simple Linear Regression Snippet",
         "scope": "python"
@@ -116,6 +124,8 @@
         "prefix": "ml-r-mlr",
         "body": [
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.preprocessing import OneHotEncoder, StandardScaler",
             "from sklearn.metrics import r2_score",
             "from sklearn.linear_model import LinearRegression",
@@ -146,7 +156,11 @@
             "y_pred = model.predict(X_test)",
             "# %%",
             "r2_score(y_pred, y_test)",
-            "# Other matrices could be used here"
+            "# Other matrices could be used here",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Multiple Linear Regression Snippet",
         "scope": "python"
@@ -155,6 +169,8 @@
         "prefix": "ml-r-ply",
         "body": [
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import r2_score",
             "from sklearn.preprocessing import PolynomialFeatures",
             "import numpy as np",
@@ -171,7 +187,11 @@
             "poly_reg = PolynomialFeatures(degree=$2)",
             "X_poly = poly_reg.fit_transform(X)",
             "# %%",
-            "r2_score(y, lin_reg_2.predict(X_poly))"
+            "r2_score(y, lin_reg_2.predict(X_poly))",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Polynomial Regression snippet",
         "scope": "python"
@@ -180,6 +200,8 @@
         "prefix": "ml-r-svr",
         "body": [
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import r2_score",
             "from sklearn.svm import SVR",
             "import pandas as pd",
@@ -196,7 +218,11 @@
             "# %%",
             "y_pred = reg.predict(X)",
             "# %%",
-            "r2_score(y, y_pred)"
+            "r2_score(y, y_pred)",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "SVM Regressor with RBF kernel",
         "scope": "python"
@@ -205,6 +231,8 @@
         "prefix": "ml-r-dtr",
         "body": [
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import r2_score",
             "from sklearn.tree import DecisionTreeRegressor",
             "import pandas as pd",
@@ -221,7 +249,11 @@
             "# %%",
             "y_pred = regressor.predict(X)",
             "# %%",
-            "r2_score(y, y_pred)"
+            "r2_score(y, y_pred)",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Decision Tree Regressor Snippet",
         "scope": "python"
@@ -230,6 +262,8 @@
         "prefix": "ml-r-rfr",
         "body": [
             "# %%",
+            "from joblib import dump, load", 
+            "from pathlib import Path", 
             "from sklearn.metrics import r2_score",
             "from sklearn.ensemble import RandomForestRegressor",
             "import pandas as pd",
@@ -247,7 +281,11 @@
             "# %%",
             "y_pred = regressor.predict(X)",
             "# %%",
-            "r2_score(y, y_pred)"
+            "r2_score(y, y_pred)",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Random Forest Regressor Snippet",
         "scope": "python"
@@ -260,6 +298,8 @@
             "### Logistic Regression",
             "'''",
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import (",
             "    f1_score,",
             "    accuracy_score,",
@@ -304,7 +344,11 @@
             "print(f'Confusion Matrix:{confusion_matrix(y_test, y_pred)}')",
             "print(f'F1 Score:{f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Logistic Regression",
         "scope": "python"
@@ -317,6 +361,8 @@
             "K-Nearest Neighbors (K-NN) Classification",
             "'''",
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix, auc, roc_curve",
             "from sklearn.neighbors import KNeighborsClassifier",
             "from sklearn.preprocessing import StandardScaler",
@@ -354,7 +400,11 @@
             "print(f'Confusion Matrix:{confusion_matrix(y_test, y_pred)}')",
             "print(f'F1 Score:{f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "K-Nearest Neighbors (K-NN) Classification",
         "scope": "python"
@@ -367,6 +417,8 @@
             "Support Vector Machine (SVM) Classification",
             "'''",
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.svm import SVC",
             "from sklearn.preprocessing import StandardScaler",
@@ -395,7 +447,11 @@
             "# %%",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Support Vector Machine (SVM) Classification",
         "scope": "python"
@@ -408,6 +464,8 @@
             "Kernel SVM Classification",
             "'''",
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.svm import SVC",
             "from sklearn.preprocessing import StandardScaler",
@@ -435,7 +493,11 @@
             "# %%",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Kernel SVM Classification",
         "scope": "python"
@@ -448,6 +510,8 @@
             "Gaussian Naive Bayes",
             "'''",
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.naive_bayes import GaussianNB",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.preprocessing import StandardScaler",
@@ -474,7 +538,11 @@
             "# %%",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y)}')"
+            "print(f'Recall Score: {recall_score(y_test, y)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Gaussian Naive Bayes",
         "scope": "python"
@@ -487,6 +555,8 @@
             "Multinomial Naive Bayes",
             "'''",
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.naive_bayes import MultinomialNB",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.preprocessing import StandardScaler",
@@ -513,7 +583,11 @@
             "# %%",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y)}')"
+            "print(f'Recall Score: {recall_score(y_test, y)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Multinomial Naive Bayes",
         "scope": "python"
@@ -526,6 +600,8 @@
             "Decision Tree Classification",
             "'''",
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.tree import DecisionTreeClassifier",
             "from sklearn.preprocessing import StandardScaler",
@@ -555,7 +631,11 @@
             "# %%",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Decision Tree Classification",
         "scope": "python"
@@ -568,6 +648,8 @@
             "### Random Forest Classification",
             "'''",
             "# %%",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.ensemble import RandomForestClassifier",
             "from sklearn.preprocessing import StandardScaler",
@@ -595,7 +677,11 @@
             "# %%",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Random Forest Classification",
         "scope": "python"
@@ -603,6 +689,8 @@
     "Simple Linear Regression ": {
         "prefix": "ml-r-slr",
         "body": [
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import r2_score",
             "import pandas as pd",
             "import numpy as np",
@@ -619,7 +707,11 @@
             "model = LinearRegression(",
             "    normalize=True, fit_intercept=True, n_jobs=-1).fit(X_train, y_train)",
             "y_predicted = model.predict(X_test)",
-            "r2_score(y_predicted, y_test)"
+            "r2_score(y_predicted, y_test)",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Simple Linear Regression Snippet",
         "scope": "python"
@@ -627,6 +719,8 @@
     "Multiple Linear Regression": {
         "prefix": "ml-r-mlr",
         "body": [
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.preprocessing import OneHotEncoder, StandardScaler",
             "from sklearn.metrics import r2_score",
             "from sklearn.linear_model import LinearRegression",
@@ -650,7 +744,11 @@
             "model = LinearRegression().fit(X_train, y_train)",
             "y_pred = model.predict(X_test)",
             "r2_score(y_pred, y_test)",
-            "# Other matrices could be used here"
+            "# Other matrices could be used here",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Multiple Linear Regression Snippet",
         "scope": "python"
@@ -658,6 +756,8 @@
     "Polynomial Regression": {
         "prefix": "ml-r-ply",
         "body": [
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import r2_score",
             "from sklearn.preprocessing import PolynomialFeatures",
             "import numpy as np",
@@ -670,7 +770,11 @@
             "# Do required transformation(s) for X and/or y (If required)",
             "poly_reg = PolynomialFeatures(degree=$2)",
             "X_poly = poly_reg.fit_transform(X)",
-            "r2_score(y, lin_reg_2.predict(X_poly))"
+            "r2_score(y, lin_reg_2.predict(X_poly))",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Polynomial Regression snippet",
         "scope": "python"
@@ -678,6 +782,8 @@
     "SVM Regressor with RBF kernel": {
         "prefix": "ml-r-svr",
         "body": [
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import r2_score",
             "from sklearn.svm import SVR",
             "import pandas as pd",
@@ -688,7 +794,11 @@
             "# Do required transformation(s) for X and/or y (If required)",
             "reg = SVR(kernel='rbf').fit(X, y)",
             "y_pred = reg.predict(X)",
-            "r2_score(y, y_pred)"
+            "r2_score(y, y_pred)",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "SVM Regressor with RBF kernel",
         "scope": "python"
@@ -696,6 +806,8 @@
     "Decision Tree Regressor": {
         "prefix": "ml-r-dtr",
         "body": [
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import r2_score",
             "from sklearn.tree import DecisionTreeRegressor",
             "import pandas as pd",
@@ -706,7 +818,11 @@
             "# Do required transformation(s) for X and/or y (If required)",
             "regressor = DecisionTreeRegressor(random_state=997).fit(X, y)",
             "y_pred = regressor.predict(X)",
-            "r2_score(y, y_pred)"
+            "r2_score(y, y_pred)",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Decision Tree Regressor Snippet",
         "scope": "python"
@@ -714,6 +830,8 @@
     "Random Forest Regressor": {
         "prefix": "ml-r-rfr",
         "body": [
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import r2_score",
             "from sklearn.ensemble import RandomForestRegressor",
             "import pandas as pd",
@@ -725,7 +843,11 @@
             "# Do required transformation(s) for X and/or y (If required)",
             "regressor = RandomForestRegressor(n_estimators=10, random_state=0).fit(X, y)",
             "y_pred = regressor.predict(X)",
-            "r2_score(y, y_pred)"
+            "r2_score(y, y_pred)",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Random Forest Regressor Snippet",
         "scope": "python"
@@ -733,10 +855,11 @@
     "Logistic Regression Classification": {
         "prefix": "ml-c-lr",
         "body": [
-            "# %% [markdown]",
             "'''",
             "### Logistic Regression",
             "'''",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import (",
             "    f1_score,",
             "    accuracy_score,",
@@ -770,7 +893,11 @@
             "print(f'Confusion Matrix:{confusion_matrix(y_test, y_pred)}')",
             "print(f'F1 Score:{f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Logistic Regression",
         "scope": "python"
@@ -778,10 +905,11 @@
     "K-Nearest Neighbors (K-NN) Classification": {
         "prefix": "ml-c-knn",
         "body": [
-            "# %% [markdown]",
             "'''",
             "K-Nearest Neighbors (K-NN) Classification",
             "'''",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix, auc, roc_curve",
             "from sklearn.neighbors import KNeighborsClassifier",
             "from sklearn.preprocessing import StandardScaler",
@@ -808,7 +936,11 @@
             "print(f'Confusion Matrix:{confusion_matrix(y_test, y_pred)}')",
             "print(f'F1 Score:{f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "K-Nearest Neighbors (K-NN) Classification",
         "scope": "python"
@@ -816,10 +948,11 @@
     "Support Vector Machine (SVM) Classification": {
         "prefix": "ml-c-svm",
         "body": [
-            "# %% [markdown]",
             "'''",
             "Support Vector Machine (SVM) Classification",
             "'''",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.svm import SVC",
             "from sklearn.preprocessing import StandardScaler",
@@ -840,7 +973,11 @@
             "confusion_matrix(y_test, y_pred)",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Support Vector Machine (SVM) Classification",
         "scope": "python"
@@ -848,10 +985,11 @@
     "Kernel SVM Classification": {
         "prefix": "ml-c-ksvm",
         "body": [
-            "# %% [markdown]",
             "'''",
             "Kernel SVM Classification",
             "'''",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.svm import SVC",
             "from sklearn.preprocessing import StandardScaler",
@@ -871,7 +1009,11 @@
             "confusion_matrix(y_test, y_pred)",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Kernel SVM Classification",
         "scope": "python"
@@ -879,10 +1021,11 @@
     "Gaussian Naive Bayes": {
         "prefix": "ml-c-gnb",
         "body": [
-            "# %% [markdown]",
             "'''",
             "Gaussian Naive Bayes",
             "'''",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.naive_bayes import GaussianNB",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.preprocessing import StandardScaler",
@@ -901,7 +1044,11 @@
             "confusion_matrix(y_test, y_pred)",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y)}')"
+            "print(f'Recall Score: {recall_score(y_test, y)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Gaussian Naive Bayes",
         "scope": "python"
@@ -909,10 +1056,11 @@
     "Multinomial Naive Bayes": {
         "prefix": "ml-c-mnb",
         "body": [
-            "# %% [markdown]",
             "'''",
             "Multinomial Naive Bayes",
             "'''",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.naive_bayes import MultinomialNB",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.preprocessing import StandardScaler",
@@ -931,7 +1079,11 @@
             "confusion_matrix(y_test, y_pred)",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y)}')"
+            "print(f'Recall Score: {recall_score(y_test, y)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Multinomial Naive Bayes",
         "scope": "python"
@@ -939,10 +1091,11 @@
     "Decision Tree Classification": {
         "prefix": "ml-c-dtc",
         "body": [
-            "# %% [markdown]",
             "'''",
             "Decision Tree Classification",
             "'''",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.tree import DecisionTreeClassifier",
             "from sklearn.preprocessing import StandardScaler",
@@ -964,7 +1117,11 @@
             "confusion_matrix(y_test, y_pred)",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Decision Tree Classification",
         "scope": "python"
@@ -972,10 +1129,11 @@
     "Random Forest Classification": {
         "prefix": "ml-c-rfc",
         "body": [
-            "# %% [markdown]",
             "'''",
             "### Random Forest Classification",
             "'''",
+            "from joblib import dump, load",
+            "from pathlib import Path",
             "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
             "from sklearn.ensemble import RandomForestClassifier",
             "from sklearn.preprocessing import StandardScaler",
@@ -995,7 +1153,11 @@
             "confusion_matrix(y_test, y_pred)",
             "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
             "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')"
+            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "model_dir_path = Path('model')",
+            "model_dir_path.mkdir(exist_ok=True)",
+            "dump(classifier, 'model/classifier.joblib')",
+            "loaded_model = load('model/classifier.joblib')"
         ],
         "description": "Random Forest Classification",
         "scope": "python"
