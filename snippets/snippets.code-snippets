@@ -114,8 +114,8 @@
             "r2_score(y_predicted, y_test)",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(model, 'model/model.joblib')",
+            "loaded_model = load('model/model.joblib')"
         ],
         "description": "Simple Linear Regression Snippet",
         "scope": "python"
@@ -159,8 +159,8 @@
             "# Other matrices could be used here",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(model, 'model/model.joblib')",
+            "loaded_model = load('model/model.joblib')"
         ],
         "description": "Multiple Linear Regression Snippet",
         "scope": "python"
@@ -190,8 +190,8 @@
             "r2_score(y, lin_reg_2.predict(X_poly))",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(poly_reg, 'model/poly_reg.joblib')",
+            "loaded_model = load('model/poly_reg.joblib')"
         ],
         "description": "Polynomial Regression snippet",
         "scope": "python"
@@ -221,8 +221,8 @@
             "r2_score(y, y_pred)",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(reg, 'model/reg.joblib')",
+            "loaded_model = load('model/reg.joblib')"
         ],
         "description": "SVM Regressor with RBF kernel",
         "scope": "python"
@@ -252,8 +252,8 @@
             "r2_score(y, y_pred)",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(regressor, 'model/regressor.joblib')",
+            "loaded_model = load('model/regressor.joblib')"
         ],
         "description": "Decision Tree Regressor Snippet",
         "scope": "python"
@@ -284,8 +284,8 @@
             "r2_score(y, y_pred)",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(regressor, 'model/regressor.joblib')",
+            "loaded_model = load('model/regressor.joblib')"
         ],
         "description": "Random Forest Regressor Snippet",
         "scope": "python"
@@ -710,8 +710,8 @@
             "r2_score(y_predicted, y_test)",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(model, 'model/model.joblib')",
+            "loaded_model = load('model/model.joblib')"
         ],
         "description": "Simple Linear Regression Snippet",
         "scope": "python"
@@ -747,8 +747,8 @@
             "# Other matrices could be used here",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(model, 'model/model.joblib')",
+            "loaded_model = load('model/model.joblib')"
         ],
         "description": "Multiple Linear Regression Snippet",
         "scope": "python"
@@ -773,8 +773,8 @@
             "r2_score(y, lin_reg_2.predict(X_poly))",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(poly_reg, 'model/poly_reg.joblib')",
+            "loaded_model = load('model/poly_reg.joblib')"
         ],
         "description": "Polynomial Regression snippet",
         "scope": "python"
@@ -797,8 +797,8 @@
             "r2_score(y, y_pred)",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(reg, 'model/reg.joblib')",
+            "loaded_model = load('model/reg.joblib')"
         ],
         "description": "SVM Regressor with RBF kernel",
         "scope": "python"
@@ -821,8 +821,8 @@
             "r2_score(y, y_pred)",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(regressor, 'model/regressor.joblib')",
+            "loaded_model = load('model/regressor.joblib')"
         ],
         "description": "Decision Tree Regressor Snippet",
         "scope": "python"
@@ -846,8 +846,8 @@
             "r2_score(y, y_pred)",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(regressor, 'model/regressor.joblib')",
+            "loaded_model = load('model/regressor.joblib')"
         ],
         "description": "Random Forest Regressor Snippet",
         "scope": "python"
