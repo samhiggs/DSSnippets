@@ -25,10 +25,11 @@
   - Supervised Machine Learning
     - Snippets will start with `ml`
     - If it is for `Regression` then `-r` suffix will be added
-    - If it is for `Classification` then `-c` suffix will be added (Coming Soon!!!)
+    - If it is for `Classification` then `-c` suffix will be added
     - Final will approach for example:
       - `-slr` ==> Linear Regression - Single Variable
       - `-mlr` ==> Linear Regression - Multiple Variables
+    - -nb will create a notebook snippet, no nb will generate python script
 
 **So for simle linear regression snippet will be `ml-r-slr`. See available snippets below**
 
@@ -47,25 +48,26 @@
 
 | Snippet Key | Description                   |
 | ----------- | ----------------------------- |
-| ml-r-slr    | Simple Linear Regression      |
-| ml-r-mlr    | Multiple Linear Regression    |
-| ml-r-ply    | Polynomial Regression         |
-| ml-r-svr    | SVM Regressor with RBF kernel |
-| ml-r-dtr    | Decision Tree Regressor       |
-| ml-r-rfr    | Random Forest Regressor       |
+| ml-r-slr-nb    | Simple Linear Regression      |
+| ml-r-mlr-nb    | Multiple Linear Regression    |
+| ml-r-ply-nb    | Polynomial Regression         |
+| ml-r-svr-nb    | SVM Regressor with RBF kernel |
+| ml-r-dtr-nb    | Decision Tree Regressor       |
+| ml-r-rfr-nb    | Random Forest Regressor       |
 
 ### Classification
 
 | Snippet Key | Description                                 |
 | ----------- | ------------------------------------------- |
-| ml-c-lr     | Logistic Regression Classification          |
-| ml-c-knn    | K-Nearest Neighbors (K-NN) Classification   |
-| ml-c-svm    | Support Vector Machine (SVM) Classification |
-| ml-c-ksvm   | Kernel SVM Classification                   |
-| ml-c-gnb    | Gaussian Naive Bayes                        |
-| ml-c-mnb    | Multinomial Naive Bayes                     |
-| ml-c-dtc    | Decision Tree Classification                |
-| ml-c-rfc    | Random Forest Classification                |
+| ml-c-lr-nb     | Logistic Regression Classification          |
+| ml-c-knn-nb    | K-Nearest Neighbors (K-NN) Classification   |
+| ml-c-svm-nb    | Support Vector Machine (SVM) Classification |
+| ml-c-ksvm-nb   | Kernel SVM Classification                   |
+| ml-c-gnb-nb    | Gaussian Naive Bayes                        |
+| ml-c-mnb-nb    | Multinomial Naive Bayes                     |
+| ml-c-dtc-nb    | Decision Tree Classification                |
+| ml-c-rfc-nb    | Random Forest Classification                |
+| ml-c-txt-nb    | Random Forest Text Classification                |
 
 ## [Pandas Dataframe](https://pandas.pydata.org/pandas-docs/stable/index.html) snippets
 
@@ -84,9 +86,11 @@
 
 ## Miscelanious
 
-| Snippet Key | Description |
-| ----------- | ----------- |
-| r           | Ref Line    |
+| Snippet Key    | Description |
+| -----------    | ----------- |
+| r              | Ref Line    |
+| ds-c           | generate classification dataset |
+| ds-r           | generate regression dataset |
 
 -----------------------------------------------------------------------------------------------------------
 

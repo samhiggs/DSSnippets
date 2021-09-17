@@ -4,6 +4,13 @@ For List of all supported snippets please see [Read Me File](https://github.com/
 
 ## These snippets are only for Python Language
 
+## [0.0.7]
+
+- **Add pyfile snippets, save and load and text clf**
+- Change command for notebook commands to include nb
+- Have a generic save and load for the model
+- Generate a pyfile snippet for text classification
+
 ## [0.0.6]
 
 - **Classification snippets added**

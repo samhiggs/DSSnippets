@@ -92,11 +92,11 @@
             "    bias = 0.2",
             ")"
         ],
-        "description": "Create classification dataset",
+        "description": "Create Regression dataset",
         "scope": "python"
     },
     "Simple Linear Regression NB": {
-        "prefix": "ml-r-slr",
+        "prefix": "ml-r-slr-nb",
         "body": [
             "# %%",
             "from joblib import dump, load",
@@ -134,7 +134,7 @@
         "scope": "python"
     },
     "Multiple Linear Regression NB": {
-        "prefix": "ml-r-mlr",
+        "prefix": "ml-r-mlr-nb",
         "body": [
             "# %%",
             "from joblib import dump, load",
@@ -179,7 +179,7 @@
         "scope": "python"
     },
     "Polynomial Regression NB": {
-        "prefix": "ml-r-ply",
+        "prefix": "ml-r-ply-nb",
         "body": [
             "# %%",
             "from joblib import dump, load",
@@ -210,7 +210,7 @@
         "scope": "python"
     },
     "SVM Regressor with RBF kernel NB": {
-        "prefix": "ml-r-svr",
+        "prefix": "ml-r-svr-nb",
         "body": [
             "# %%",
             "from joblib import dump, load",
@@ -241,7 +241,7 @@
         "scope": "python"
     },
     "Decision Tree Regressor NB": {
-        "prefix": "ml-r-dtr",
+        "prefix": "ml-r-dtr-nb",
         "body": [
             "# %%",
             "from joblib import dump, load",
@@ -272,7 +272,7 @@
         "scope": "python"
     },
     "Random Forest Regressor NB": {
-        "prefix": "ml-r-rfr",
+        "prefix": "ml-r-rfr-nb",
         "body": [
             "# %%",
             "from joblib import dump, load", 
@@ -304,7 +304,7 @@
         "scope": "python"
     },
     "Logistic Regression Classification NB": {
-        "prefix": "ml-c-lr",
+        "prefix": "ml-c-lr-nb",
         "body": [
             "# %% [markdown]",
             "'''",
@@ -367,7 +367,7 @@
         "scope": "python"
     },
     "K-Nearest Neighbors (K-NN) Classification NB": {
-        "prefix": "ml-c-knn",
+        "prefix": "ml-c-knn-nb",
         "body": [
             "# %% [markdown]",
             "'''",
@@ -423,7 +423,7 @@
         "scope": "python"
     },
     "Support Vector Machine (SVM) Classification NB": {
-        "prefix": "ml-c-svm",
+        "prefix": "ml-c-svm-nb",
         "body": [
             "# %% [markdown]",
             "'''",
@@ -470,7 +470,7 @@
         "scope": "python"
     },
     "Kernel SVM Classification NB": {
-        "prefix": "ml-c-ksvm",
+        "prefix": "ml-c-ksvm-nb",
         "body": [
             "# %% [markdown]",
             "'''",
@@ -516,7 +516,7 @@
         "scope": "python"
     },
     "Gaussian Naive Bayes NB": {
-        "prefix": "ml-c-gnb",
+        "prefix": "ml-c-gnb-nb",
         "body": [
             "# %% [markdown]",
             "'''",
@@ -561,7 +561,7 @@
         "scope": "python"
     },
     "Multinomial Naive Bayes NB": {
-        "prefix": "ml-c-mnb",
+        "prefix": "ml-c-mnb-nb",
         "body": [
             "# %% [markdown]",
             "'''",
@@ -606,7 +606,7 @@
         "scope": "python"
     },
     "Decision Tree Classification NB": {
-        "prefix": "ml-c-dtc",
+        "prefix": "ml-c-dtc-nb",
         "body": [
             "# %% [markdown]",
             "'''",
@@ -654,7 +654,7 @@
         "scope": "python"
     },
     "Random Forest Classification NB": {
-        "prefix": "ml-c-rfc",
+        "prefix": "ml-c-rfc-nb",
         "body": [
             "# %% [markdown]",
             "'''",
@@ -1177,36 +1177,115 @@
     },
     "Text Classification": {
         "prefix": "ml-c-txt",
-        "body": [
-            "'''",
+        "body": ["'''",
             "### Random Forest Text Classification",
             "'''",
             "from joblib import dump, load",
             "from pathlib import Path",
-            "from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix",
+            "import string",
+            "from pprint import pprint",
+            "",
+            "from sklearn.base import BaseEstimator, TransformerMixin",
+            "from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer",
             "from sklearn.ensemble import RandomForestClassifier",
-            "from sklearn.preprocessing import StandardScaler",
             "from sklearn.model_selection import train_test_split",
+            "from sklearn.model_selection import RandomizedSearchCV # Number of trees in random forest",
+            "from sklearn.pipeline import Pipeline",
+            "from sklearn import metrics",
+            "",
             "import pandas as pd",
+            "import numpy as np",
+            "",
+            "import nltk",
+            "from nltk import word_tokenize",
+            "from nltk.corpus import stopwords",
+            "from nltk.stem.porter import PorterStemmer",
+            "",
+            "# Global text Tools (need to download nltk data)",
+            "stop_words = stopwords.words('english')",
+            "porter = PorterStemmer()",
+            "",
             "dataset = pd.read_csv('$1')",
-            "X = dataset.iloc[:, :-1].values",
-            "y = dataset.iloc[:, -1].values",
+            "text_col = $2",
+            "label_col = $3",
+            "",
+            "# Convert to categorical to enable masking",
+            "dataset[label_col] = dataset[label_col].astype('category')",
+            "",
+            "class Preprocessor(BaseEstimator, TransformerMixin):",
+            "    def __init__(self):",
+            "        pass",
+            "",
+            "    def fit(self, X, y = None):",
+            "        return self",
+            "",
+            "    def _clean_text(self, text):",
+            "        text_ = text.lower()",
+            "        text_ = ''.join([char for char in text if char not in string.punctuation])",
+            "        tokens = word_tokenize(text_)",
+            "        tokens = [word for word in tokens if word not in stop_words]",
+            "        stemmed = [porter.stem(word) for word in tokens]",
+            "        return ' '.join(stemmed)",
+            "",
+            "",
+            "    def transform(self, X, y = None):",
+            "        return X.apply(self._clean_text)",
+            "",
+            "# Convert to numerical",
+            "X = dataset[text_col]",
+            "y = dataset[label_col].cat.codes",
+            "y.value_counts()",
+            "",
             "X_train, X_test, y_train, y_test = train_test_split(",
             "    X, y, test_size=0.2, random_state=997)",
-            "ss = StandardScaler()",
-            "scalled_x_train = ss.fit_transform(X_train)",
-            "scalled_x_test = ss.transform(X_test)",
-            "classifier = RandomForestClassifier(",
-            "    n_estimators=45, criterion='entropy', n_jobs=-1).fit(scalled_x_train, y_train)",
-            "y_pred = classifier.predict(scalled_x_test)",
-            "confusion_matrix(y_test, y_pred)",
-            "print(f'F1 Score: {f1_score(y_test, y_pred)}')",
-            "print(f'Accuracy Score: {accuracy_score(y_test, y_pred)}')",
-            "print(f'Recall Score: {recall_score(y_test, y_pred)}')",
+            "",
+            "",
+            "n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]",
+            "# Number of features to consider at every split",
+            "max_features = ['auto', 'sqrt']",
+            "# Maximum number of levels in tree",
+            "max_depth = [int(x) for x in np.linspace(10, 110, num = 11)]",
+            "max_depth.append(None)",
+            "# Minimum number of samples required to split a node",
+            "min_samples_split = [2, 5, 10]",
+            "# Minimum number of samples required at each leaf node",
+            "min_samples_leaf = [1, 2, 4]",
+            "# Method of selecting samples for training each tree",
+            "bootstrap = [True, False]# Create the random grid",
+            "random_grid = {'n_estimators': n_estimators,",
+            "               'max_features': max_features,",
+            "               'max_depth': max_depth,",
+            "               'min_samples_split': min_samples_split,",
+            "               'min_samples_leaf': min_samples_leaf,",
+            "               'bootstrap': bootstrap}",
+            "               ",
+            "pprint(random_grid)",
+            "rf_random = RandomizedSearchCV(",
+            "    estimator = RandomForestClassifier(),",
+            "    param_distributions = random_grid, ",
+            "    n_iter = 10, ",
+            "    cv = 3, ",
+            "    verbose=2, ",
+            "    random_state=42, ",
+            "    n_jobs = -1",
+            ")",
+            "",
+            "clf_pipeline = Pipeline([",
+            "    ('Preprocessing', Preprocessor()),",
+            "    ('vect', CountVectorizer()),",
+            "    ('tfidf', TfidfTransformer()),",
+            "    ('clf', rf_random)",
+            "])",
+            "clf_pipeline.fit(X_train, y_train)",
+            "",
+            "",
+            "y_pred = clf_pipeline.predict(X_test)",
+            "print(metrics.classification_report(y_test, y_pred))",
+            "",
             "model_dir_path = Path('model')",
             "model_dir_path.mkdir(exist_ok=True)",
-            "dump(classifier, 'model/classifier.joblib')",
-            "loaded_model = load('model/classifier.joblib')"
+            "dump(clf_pipeline, 'model/clf_pipeline.joblib')",
+            "loaded_model = load('model/clf_pipeline.joblib')"
         ],
         "description": "Random Forest Classification",
         "scope": "python"
