@@ -1,6 +1,5 @@
 # Python Snippets For Data Science
 
-## COVID19: Wear Mask, Keep distance, Stay Home, Stay Safe
 
 **Thank you for using these snippets, hope they make your coding faster, welcome your feedback!!!**
 
@@ -48,26 +47,26 @@
 
 | Snippet Key | Description                   |
 | ----------- | ----------------------------- |
-| ml-r-slr-nb    | Simple Linear Regression      |
-| ml-r-mlr-nb    | Multiple Linear Regression    |
-| ml-r-ply-nb    | Polynomial Regression         |
-| ml-r-svr-nb    | SVM Regressor with RBF kernel |
-| ml-r-dtr-nb    | Decision Tree Regressor       |
-| ml-r-rfr-nb    | Random Forest Regressor       |
+| ml-r-slr-nb | Simple Linear Regression      |
+| ml-r-mlr-nb | Multiple Linear Regression    |
+| ml-r-ply-nb | Polynomial Regression         |
+| ml-r-svr-nb | SVM Regressor with RBF kernel |
+| ml-r-dtr-nb | Decision Tree Regressor       |
+| ml-r-rfr-nb | Random Forest Regressor       |
 
 ### Classification
 
-| Snippet Key | Description                                 |
-| ----------- | ------------------------------------------- |
-| ml-c-lr-nb     | Logistic Regression Classification          |
-| ml-c-knn-nb    | K-Nearest Neighbors (K-NN) Classification   |
-| ml-c-svm-nb    | Support Vector Machine (SVM) Classification |
-| ml-c-ksvm-nb   | Kernel SVM Classification                   |
-| ml-c-gnb-nb    | Gaussian Naive Bayes                        |
-| ml-c-mnb-nb    | Multinomial Naive Bayes                     |
-| ml-c-dtc-nb    | Decision Tree Classification                |
-| ml-c-rfc-nb    | Random Forest Classification                |
-| ml-c-txt-nb    | Random Forest Text Classification                |
+| Snippet Key  | Description                                 |
+| ------------ | ------------------------------------------- |
+| ml-c-lr-nb   | Logistic Regression Classification          |
+| ml-c-knn-nb  | K-Nearest Neighbors (K-NN) Classification   |
+| ml-c-svm-nb  | Support Vector Machine (SVM) Classification |
+| ml-c-ksvm-nb | Kernel SVM Classification                   |
+| ml-c-gnb-nb  | Gaussian Naive Bayes                        |
+| ml-c-mnb-nb  | Multinomial Naive Bayes                     |
+| ml-c-dtc-nb  | Decision Tree Classification                |
+| ml-c-rfc-nb  | Random Forest Classification                |
+| ml-c-txt-nb  | Random Forest Text Classification           |
 
 ## [Pandas Dataframe](https://pandas.pydata.org/pandas-docs/stable/index.html) snippets
 
@@ -86,13 +85,17 @@
 
 ## Miscelanious
 
-| Snippet Key    | Description |
-| -----------    | ----------- |
-| r              | Ref Line    |
-| ds-c           | generate classification dataset |
-| ds-r           | generate regression dataset |
+| Snippet Key | Description                     |
+| ----------- | ------------------------------- |
+| r           | Ref Line                        |
+| ds-c        | generate classification dataset |
+| ds-r        | generate regression dataset     |
 
 -----------------------------------------------------------------------------------------------------------
+
+## Adding to vscode
+To add this, find the vscode snippets directory and copy it   
+`cp snippets/snippets.code-snippets ~/Library/Application\ Support/Code/User/snippets/snippets.code-snippets`
 
 ## Requirements
 
